@@ -7,7 +7,6 @@
 //headers in this package
 #include <quaternion_operation/quaternion_operation.h>
 
-// Declare a test
 TEST(TestSuite, testCase1)
 {
     geometry_msgs::Quaternion ans,q1,q2;
@@ -26,7 +25,6 @@ TEST(TestSuite, testCase1)
     EXPECT_EQ(ans.w,2);
 }
 
-// Declare another test
 TEST(TestSuite, testCase2)
 {
     geometry_msgs::Quaternion ans,q1,q2;
@@ -40,6 +38,44 @@ TEST(TestSuite, testCase2)
     q2.w = 1;
     ans = q1 * q2;
     EXPECT_EQ(quaternion_operation::equals(q1,ans),true);
+}
+
+TEST(TestSuite, testCase3)
+{
+    geometry_msgs::Quaternion q1;
+    q1.x = 0;
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = 1;
+    Eigen::MatrixXd mat = quaternion_operation::getRotationMatrix(q1);
+    EXPECT_FLOAT_EQ(mat(0,0), 1.0);
+    EXPECT_FLOAT_EQ(mat(0,1), 0.0);
+    EXPECT_FLOAT_EQ(mat(0,2), 0.0);
+    EXPECT_FLOAT_EQ(mat(1,0), 0.0);
+    EXPECT_FLOAT_EQ(mat(1,1), 1.0);
+    EXPECT_FLOAT_EQ(mat(1,2), 0.0);
+    EXPECT_FLOAT_EQ(mat(2,0), 0.0);
+    EXPECT_FLOAT_EQ(mat(2,1), 0.0);
+    EXPECT_FLOAT_EQ(mat(2,2), 1.0);
+}
+
+TEST(TestSuite, testCase4)
+{
+    geometry_msgs::Quaternion q1;
+    q1.x = std::sqrt((double)0.5);
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = std::sqrt((double)0.5);
+    Eigen::MatrixXd mat = quaternion_operation::getRotationMatrix(q1);
+    EXPECT_FLOAT_EQ(mat(0,0),  1.0);
+    EXPECT_FLOAT_EQ(mat(0,1),  0.0);
+    EXPECT_FLOAT_EQ(mat(0,2),  0.0);
+    EXPECT_FLOAT_EQ(mat(1,0),  0.0);
+    //EXPECT_FLOAT_EQ(mat(1,1),  0.0);
+    EXPECT_FLOAT_EQ(mat(1,2), -1.0);
+    EXPECT_FLOAT_EQ(mat(2,0),  0.0);
+    EXPECT_FLOAT_EQ(mat(2,1),  1.0);
+    //EXPECT_FLOAT_EQ(mat(2,2),  0.0);
 }
 
 // Run all the tests that were declared with TEST()

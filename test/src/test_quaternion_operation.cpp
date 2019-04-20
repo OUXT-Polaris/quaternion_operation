@@ -93,6 +93,38 @@ TEST(TestSuite, testCase5)
     EXPECT_EQ(quaternion_operation::equals(q1,ans),true);
 }
 
+TEST(TestSuite, testCase6)
+{
+    geometry_msgs::Quaternion q1,q2,ans;
+    q1.x = 0;
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = 1;
+    q1.x = 1;
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = 0;
+    ans  = quaternion_operation::slerp(q1,q2,0);
+    EXPECT_EQ(quaternion_operation::equals(q1,ans),true);
+    ans  = quaternion_operation::slerp(q1,q2,1);
+    EXPECT_EQ(quaternion_operation::equals(q2,ans),true);
+}
+
+TEST(TestSuite, testCase7)
+{
+    geometry_msgs::Quaternion q1,q2,ans;
+    q1.x = 0;
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = 1;
+    q1.x = 1;
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = 0;
+    ans  = quaternion_operation::getRotation(q1,q2);
+    EXPECT_EQ(quaternion_operation::equals(q1,ans),true);
+}
+
 // Run all the tests that were declared with TEST()
 int main(int argc, char **argv){
     testing::InitGoogleTest(&argc, argv);

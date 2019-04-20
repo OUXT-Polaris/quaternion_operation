@@ -75,6 +75,19 @@ namespace quaternion_operation
         return ret;
     }
 
+    geometry_msgs::Quaternion conjugate(geometry_msgs::Quaternion quat1)
+    {
+        quat1.w = quat1.w * -1;
+        return quat1;
+    }
+
+    geometry_msgs::Quaternion getRotation(geometry_msgs::Quaternion from,geometry_msgs::Quaternion to)
+    {
+        geometry_msgs::Quaternion ans;
+        ans = conjugate(from) * to;
+        return ans;
+    }
+
     geometry_msgs::Quaternion slerp(geometry_msgs::Quaternion quat1,geometry_msgs::Quaternion quat2,double t)
     {
         geometry_msgs::Quaternion q;

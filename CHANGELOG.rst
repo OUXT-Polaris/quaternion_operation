@@ -2,6 +2,11 @@
 Changelog for package quaternion_operation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix operator *
+* Contributors: Masaya Kataoka
+
 0.0.1 (2019-04-21)
 ------------------
 * add mainpage

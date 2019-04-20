@@ -1,3 +1,14 @@
+/**
+ * @file test_quaternion_operation.cpp
+ * @author Masaya Kataoka ms.kataoka@gmail.com
+ * @brief test code for Quaternion Operation
+ * @version 0.1
+ * @date 2019-04-21
+ * 
+ * @copyright Copyright (c) 2019
+ * 
+ */
+
 //headers in Google Test
 #include <gtest/gtest.h>
 
@@ -7,6 +18,10 @@
 //headers in this package
 #include <quaternion_operation/quaternion_operation.h>
 
+/**
+ * @brief test for + operator
+ * 
+ */
 TEST(TestSuite, testCase1)
 {
     geometry_msgs::Quaternion ans,q1,q2;
@@ -25,6 +40,10 @@ TEST(TestSuite, testCase1)
     EXPECT_EQ(ans.w,2);
 }
 
+/**
+ * @brief test for * operator
+ * 
+ */
 TEST(TestSuite, testCase2)
 {
     geometry_msgs::Quaternion ans,q1,q2;
@@ -40,6 +59,10 @@ TEST(TestSuite, testCase2)
     EXPECT_EQ(quaternion_operation::equals(q1,ans),true);
 }
 
+/**
+ * @brief test for getRotationMatrix function
+ * @sa quaternion_operation::getRotationMatrix
+ */
 TEST(TestSuite, testCase3)
 {
     geometry_msgs::Quaternion q1;
@@ -59,6 +82,10 @@ TEST(TestSuite, testCase3)
     EXPECT_FLOAT_EQ(mat(2,2), 1.0);
 }
 
+/**
+ * @brief test for getRotationMatrix function
+ * @sa quaternion_operation::getRotationMatrix
+ */
 TEST(TestSuite, testCase4)
 {
     geometry_msgs::Quaternion q1;
@@ -78,6 +105,10 @@ TEST(TestSuite, testCase4)
     //EXPECT_FLOAT_EQ(mat(2,2),  0.0);
 }
 
+/**
+ * @brief test for slerp function
+ * @sa quaternion_operation::slerp
+ */
 TEST(TestSuite, testCase5)
 {
     geometry_msgs::Quaternion q1,q2,ans;
@@ -93,6 +124,10 @@ TEST(TestSuite, testCase5)
     EXPECT_EQ(quaternion_operation::equals(q1,ans),true);
 }
 
+/**
+ * @brief test for slerp function
+ * @sa quaternion_operation::slerp
+ */
 TEST(TestSuite, testCase6)
 {
     geometry_msgs::Quaternion q1,q2,ans;
@@ -110,6 +145,10 @@ TEST(TestSuite, testCase6)
     EXPECT_EQ(quaternion_operation::equals(q2,ans),true);
 }
 
+/**
+ * @brief test for getRotation function
+ * @sa quaternion_operation::getRotation
+ */
 TEST(TestSuite, testCase7)
 {
     geometry_msgs::Quaternion q1,q2,ans;
@@ -165,6 +204,10 @@ TEST(TestSuite, testCase7)
     EXPECT_EQ(quaternion_operation::equals(q2,ans),true);
 }
 
+/**
+ * @brief test for rotation function
+ * @sa quaternion_operation::rotation
+ */
 TEST(TestSuite, testCase8)
 {
     geometry_msgs::Quaternion q1,q2,ans;
@@ -180,7 +223,13 @@ TEST(TestSuite, testCase8)
     EXPECT_EQ(quaternion_operation::equals(q1,ans),true);
 }
 
-// Run all the tests that were declared with TEST()
+/**
+ * @brief Run all the tests that were declared with TEST()
+ * 
+ * @param argc 
+ * @param argv 
+ * @return int 
+ */
 int main(int argc, char **argv){
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

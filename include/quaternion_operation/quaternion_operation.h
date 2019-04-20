@@ -1,6 +1,17 @@
 #ifndef QUATERNION_OPERATION_QUATERNION_OPERATION_H_INCLUDED
 #define QUATERNION_OPERATION_QUATERNION_OPERATION_H_INCLUDED
 
+/**
+ * @file quaternion_operation.h
+ * @author Masaya Kataoka (ms.kataoka@gmail.com)
+ * @brief Functions for Quaternion Operation
+ * @version 0.1
+ * @date 2019-04-21
+ * 
+ * @copyright Copyright (c) 2019
+ * 
+ */
+
 //headers in ROS
 #include <geometry_msgs/Quaternion.h>
 #include <geometry_msgs/Vector3.h>
@@ -9,6 +20,13 @@
 #define EIGEN_MPL2_ONLY
 #include <Eigen/Core>
 
+/**
+ * @brief + Operator overload for geometry_msgs::Quaternion (Addition)
+ * 
+ * @param quat1 
+ * @param quat2 
+ * @return geometry_msgs::Quaternion result of Addition
+ */
 geometry_msgs::Quaternion operator+(geometry_msgs::Quaternion quat1,geometry_msgs::Quaternion quat2)
 {
     geometry_msgs::Quaternion ret;
@@ -19,6 +37,13 @@ geometry_msgs::Quaternion operator+(geometry_msgs::Quaternion quat1,geometry_msg
     return ret;
 }
 
+/**
+ * @brief * Operator overload for geometry_msgs::Quaternion (Multiplication)
+ * 
+ * @param quat1 
+ * @param quat2 
+ * @return geometry_msgs::Quaternion result of Multiplication
+ */
 geometry_msgs::Quaternion operator*(geometry_msgs::Quaternion quat1,geometry_msgs::Quaternion quat2)
 {
     geometry_msgs::Quaternion ret;
@@ -29,13 +54,32 @@ geometry_msgs::Quaternion operator*(geometry_msgs::Quaternion quat1,geometry_msg
     return ret;
 }
 
+/**
+ * @brief namespace of quaternion_operation ROS package
+ * 
+ */
 namespace quaternion_operation
 {
-    geometry_msgs::Quaternion roataion(geometry_msgs::Quaternion pose,geometry_msgs::Quaternion rotation)
+    /**
+     * @brief calculate rotation of
+     * 
+     * @param pose_orientation orientation of pose
+     * @param rotation rotation quaternion
+     * @return geometry_msgs::Quaternion result of rotation
+     */
+    geometry_msgs::Quaternion roataion(geometry_msgs::Quaternion pose_orientation,geometry_msgs::Quaternion rotation)
     {
-        return rotation*pose;
+        return pose_orientation*pose_orientation;
     }
 
+    /**
+     * @brief checke 2 double values are equal or not
+     * 
+     * @param a 
+     * @param b 
+     * @return true a == b
+     * @return false a != b
+     */
     bool equals(double a,double b)
     {
         if (fabs(a - b) < DBL_EPSILON)
@@ -45,6 +89,14 @@ namespace quaternion_operation
         return false;
     }
 
+    /**
+     * @brief check 2 Quaternion values are equal or not
+     * 
+     * @param quat1 
+     * @param quat2 
+     * @return true a == b
+     * @return false a != b
+     */
     bool equals(geometry_msgs::Quaternion quat1,geometry_msgs::Quaternion quat2)
     {
         if(equals(quat1.x,quat2.x) && equals(quat1.y,quat2.y) && equals(quat1.z,quat2.z) && equals(quat1.w,quat2.w))
@@ -54,6 +106,12 @@ namespace quaternion_operation
         return false;
     }
 
+    /**
+     * @brief convert geometry_msgs::Quaternion to Eigen::MatrixXd
+     * 
+     * @param quat input Quaternion
+     * @return Eigen::MatrixXd converted Eigen Matrix (4,1)
+     */
     Eigen::MatrixXd convert(geometry_msgs::Quaternion quat)
     {
         Eigen::MatrixXd ret(4,1);
@@ -61,6 +119,12 @@ namespace quaternion_operation
         return ret;
     }
 
+    /**
+     * @brief Get the Rotation Matrix from geometry_msgs::Quaternion 
+     * 
+     * @param quat input geometry_msgs::Quaternion 
+     * @return Eigen::MatrixXd get 3x3 Rotation Matrix
+     */
     Eigen::MatrixXd getRotationMatrix(geometry_msgs::Quaternion quat)
     {
         double x = quat.x;
@@ -75,6 +139,12 @@ namespace quaternion_operation
         return ret;
     }
 
+    /**
+     * @brief get conjugate Quaternion 
+     * 
+     * @param quat1 input Quaternion 
+     * @return geometry_msgs::Quaternion conjugate Quaternion 
+     */
     geometry_msgs::Quaternion conjugate(geometry_msgs::Quaternion quat1)
     {
         quat1.x = quat1.x * -1;
@@ -84,11 +154,26 @@ namespace quaternion_operation
         return quat1;
     }
 
+    /**
+     * @brief rotate Quaternion 
+     * 
+     * @param from from pose orientation
+     * @param rotation Rotation quaternion
+     * @return geometry_msgs::Quaternion Rotated pose orientation
+     */
     geometry_msgs::Quaternion rotation(geometry_msgs::Quaternion from,geometry_msgs::Quaternion rotation)
     {
         return from*rotation;
     }
 
+    /**
+     * @brief Get the Rotation from 2 Quaternions 
+     * 
+     * @param from from pose orientation
+     * @param to to pose orientation
+     * @return geometry_msgs::Quaternion Rotation between 2 pose orientation described as Quaternion
+     * @sa quaternion_operation::rotation
+     */
     geometry_msgs::Quaternion getRotation(geometry_msgs::Quaternion from,geometry_msgs::Quaternion to)
     {
         geometry_msgs::Quaternion ans;
@@ -96,6 +181,14 @@ namespace quaternion_operation
         return ans;
     }
 
+    /**
+     * @brief Spherical linear interpolation function for geometry_msgs::Quaternion
+     * 
+     * @param quat1 
+     * @param quat2 
+     * @param t parameter for interpolation (if t=0,return==quat1),(if t=1,return==quat2)
+     * @return geometry_msgs::Quaternion result of Spherical linear interpolation opertaion
+     */
     geometry_msgs::Quaternion slerp(geometry_msgs::Quaternion quat1,geometry_msgs::Quaternion quat2,double t)
     {
         geometry_msgs::Quaternion q;

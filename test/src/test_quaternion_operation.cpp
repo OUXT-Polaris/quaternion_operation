@@ -78,6 +78,21 @@ TEST(TestSuite, testCase4)
     //EXPECT_FLOAT_EQ(mat(2,2),  0.0);
 }
 
+TEST(TestSuite, testCase5)
+{
+    geometry_msgs::Quaternion q1,q2,ans;
+    q1.x = 0;
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = 1;
+    q1.x = 0;
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = 1;
+    ans  = quaternion_operation::slerp(q1,q2,0);
+    EXPECT_EQ(quaternion_operation::equals(q1,ans),true);
+}
+
 // Run all the tests that were declared with TEST()
 int main(int argc, char **argv){
     testing::InitGoogleTest(&argc, argv);

@@ -224,6 +224,25 @@ TEST(TestSuite, testCase8)
 }
 
 /**
+ * @brief test for * operator
+ * 
+ */
+TEST(TestSuite, testCase9)
+{
+    geometry_msgs::Quaternion q1,q2;
+    q1.x = std::sqrt((double)0.8);
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = std::sqrt((double)0.2);
+    q2.x = std::sqrt((double)0.4);
+    q2.y = std::sqrt((double)0.3);
+    q2.z = 0;
+    q2.w = std::sqrt((double)0.3);
+    EXPECT_EQ(quaternion_operation::equals(q1*q2,q2*q1),false);
+}
+
+
+/**
  * @brief Run all the tests that were declared with TEST()
  * 
  * @param argc 

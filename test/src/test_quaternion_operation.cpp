@@ -85,10 +85,10 @@ TEST(TestSuite, testCase5)
     q1.y = 0;
     q1.z = 0;
     q1.w = 1;
-    q1.x = 0;
-    q1.y = 0;
-    q1.z = 0;
-    q1.w = 1;
+    q2.x = 0;
+    q2.y = 0;
+    q2.z = 0;
+    q2.w = 1;
     ans  = quaternion_operation::slerp(q1,q2,0);
     EXPECT_EQ(quaternion_operation::equals(q1,ans),true);
 }
@@ -100,10 +100,10 @@ TEST(TestSuite, testCase6)
     q1.y = 0;
     q1.z = 0;
     q1.w = 1;
-    q1.x = 1;
-    q1.y = 0;
-    q1.z = 0;
-    q1.w = 0;
+    q2.x = 1;
+    q2.y = 0;
+    q2.z = 0;
+    q2.w = 0;
     ans  = quaternion_operation::slerp(q1,q2,0);
     EXPECT_EQ(quaternion_operation::equals(q1,ans),true);
     ans  = quaternion_operation::slerp(q1,q2,1);
@@ -117,11 +117,66 @@ TEST(TestSuite, testCase7)
     q1.y = 0;
     q1.z = 0;
     q1.w = 1;
+    q2.x = 1;
+    q2.y = 0;
+    q2.z = 0;
+    q2.w = 0;
+    ans  = quaternion_operation::getRotation(q1,quaternion_operation::rotation(q1,q2));
+    EXPECT_EQ(quaternion_operation::equals(q2,ans),true);
+    q1.x = 0;
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = 1;
+    q2.x = 0;
+    q2.y = 0;
+    q2.z = 1;
+    q2.w = 0;
+    ans  = quaternion_operation::getRotation(q1,quaternion_operation::rotation(q1,q2));
+    EXPECT_EQ(quaternion_operation::equals(q2,ans),true);
+    q1.x = 0;
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = 1;
+    q2.x = std::sqrt((double)0.5);
+    q2.y = std::sqrt((double)0.5);
+    q2.z = 0;
+    q2.w = 0;
+    ans  = quaternion_operation::getRotation(q1,quaternion_operation::rotation(q1,q2));
+    EXPECT_EQ(quaternion_operation::equals(q2,ans),true);
+    q1.x = 0;
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = 1;
+    q2.x = std::sqrt((double)0.4);
+    q2.y = std::sqrt((double)0.3);
+    q2.z = 0;
+    q2.w = std::sqrt((double)0.3);
+    ans  = quaternion_operation::getRotation(q1,quaternion_operation::rotation(q1,q2));
+    EXPECT_EQ(quaternion_operation::equals(q2,ans),true);
+    q1.x = std::sqrt((double)0.8);
+    q1.y = 0;
+    q1.z = 0;
+    q1.w = std::sqrt((double)0.2);
+    q2.x = std::sqrt((double)0.4);
+    q2.y = std::sqrt((double)0.3);
+    q2.z = 0;
+    q2.w = std::sqrt((double)0.3);
+    ans  = quaternion_operation::getRotation(q1,quaternion_operation::rotation(q1,q2));
+    EXPECT_EQ(quaternion_operation::equals(q2,ans),true);
+}
+
+TEST(TestSuite, testCase8)
+{
+    geometry_msgs::Quaternion q1,q2,ans;
     q1.x = 1;
     q1.y = 0;
     q1.z = 0;
     q1.w = 0;
-    ans  = quaternion_operation::getRotation(q1,q2);
+    q2.x = 0;
+    q2.y = 0;
+    q2.z = 0;
+    q2.w = 1;
+    ans  = quaternion_operation::rotation(q1,q2);
     EXPECT_EQ(quaternion_operation::equals(q1,ans),true);
 }
 

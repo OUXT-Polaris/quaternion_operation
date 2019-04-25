@@ -69,7 +69,7 @@ namespace quaternion_operation
      */
     geometry_msgs::Quaternion roataion(geometry_msgs::Quaternion pose_orientation,geometry_msgs::Quaternion rotation)
     {
-        return pose_orientation*pose_orientation;
+        return rotation*pose_orientation;
     }
 
     /**

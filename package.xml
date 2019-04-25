@@ -6,7 +6,7 @@
 
   <maintainer email="ms.kataoka@gmail.com">Masaya Kataoka</maintainer>
 
-  <license>Aoache v2</license>
+  <license>Apache License 2.0</license>
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>geometry_msgs</build_depend>

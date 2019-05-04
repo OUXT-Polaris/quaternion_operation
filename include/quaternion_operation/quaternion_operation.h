@@ -70,15 +70,6 @@ namespace quaternion_operation
     geometry_msgs::Vector3 convertQuaternionToEulerAngle(geometry_msgs::Quaternion quat);
 
     /**
-     * @brief calculate rotation of
-     * 
-     * @param pose_orientation orientation of pose
-     * @param rotation rotation quaternion
-     * @return geometry_msgs::Quaternion result of rotation
-     */
-    geometry_msgs::Quaternion roataion(geometry_msgs::Quaternion pose_orientation,geometry_msgs::Quaternion rotation);
-
-    /**
      * @brief checke 2 double values are equal or not
      * 
      * @param a 

@@ -74,11 +74,6 @@ namespace quaternion_operation
         return ret;
     }
 
-    geometry_msgs::Quaternion roataion(geometry_msgs::Quaternion pose_orientation,geometry_msgs::Quaternion rotation)
-    {
-        return rotation*pose_orientation;
-    }
-
     bool equals(double a,double b)
     {
         if (fabs(a - b) < DBL_EPSILON)

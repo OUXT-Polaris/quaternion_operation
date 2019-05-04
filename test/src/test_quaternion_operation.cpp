@@ -241,6 +241,23 @@ TEST(TestSuite, testCase9)
     EXPECT_EQ(quaternion_operation::equals(q1*q2,q2*q1),false);
 }
 
+/**
+ * @brief test for euler to quat convertion
+ * 
+ */
+TEST(TestSuite, testCase10)
+{
+    geometry_msgs::Quaternion q;
+    geometry_msgs::Vector3 euler;
+    euler.x = 0;
+    euler.y = 0;
+    euler.z = 0;
+    q = quaternion_operation::convertEulerAngleToQuaternion(euler);
+    EXPECT_FLOAT_EQ(q.x,0);
+    EXPECT_FLOAT_EQ(q.y,0);
+    EXPECT_FLOAT_EQ(q.z,0);
+    EXPECT_FLOAT_EQ(q.w,1);
+}
 
 /**
  * @brief Run all the tests that were declared with TEST()

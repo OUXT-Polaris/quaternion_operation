@@ -19,6 +19,7 @@
 //headers in Eigen
 #define EIGEN_MPL2_ONLY
 #include <Eigen/Core>
+#include <Eigen/Geometry>
 
 /**
  * @brief + Operator overload for geometry_msgs::Quaternion (Addition)
@@ -60,6 +61,28 @@ geometry_msgs::Quaternion operator*(geometry_msgs::Quaternion quat1,geometry_msg
  */
 namespace quaternion_operation
 {
+    /**
+     * @brief convert Euler angles to Quaternion 
+     * 
+     * @param euler Euler angles
+     * @return geometry_msgs::Quaternion Quaternion  
+     */
+    geometry_msgs::Quaternion convertEulerAngleToQuaternion(geometry_msgs::Vector3 euler)
+    {
+        double roll = euler.x;
+        double pitch = euler.y;
+        double yaw = euler.z;
+        Eigen:: Quaternionf quat = Eigen::AngleAxisf(roll, Eigen::Vector3f::UnitX())
+            * Eigen::AngleAxisf(pitch, Eigen::Vector3f::UnitY())
+            * Eigen::AngleAxisf(yaw, Eigen::Vector3f::UnitZ());
+        geometry_msgs::Quaternion ret;
+        ret.x = quat.x();
+        ret.y = quat.y();
+        ret.z = quat.z();
+        ret.w = quat.w();
+        return ret;
+    }
+
     /**
      * @brief calculate rotation of
      * 
@@ -112,7 +135,7 @@ namespace quaternion_operation
      * @param quat input Quaternion
      * @return Eigen::MatrixXd converted Eigen Matrix (4,1)
      */
-    Eigen::MatrixXd convert(geometry_msgs::Quaternion quat)
+    Eigen::MatrixXd convertToEigenMatrix(geometry_msgs::Quaternion quat)
     {
         Eigen::MatrixXd ret(4,1);
         ret << quat.x,quat.y,quat.z,quat.w;

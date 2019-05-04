@@ -9,7 +9,7 @@ depends:
 - roscpp
 - eigen
 description: The quaternion_operation package
-license: Aoache v2
+license: Apache License 2.0
 maintainers: Masaya Kataoka <ms.kataoka@gmail.com>
 msgs: []
 package_type: package

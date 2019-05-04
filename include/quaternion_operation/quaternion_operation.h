@@ -19,6 +19,7 @@
 //headers in Eigen
 #define EIGEN_MPL2_ONLY
 #include <Eigen/Core>
+#include <Eigen/Geometry>
 
 /**
  * @brief + Operator overload for geometry_msgs::Quaternion (Addition)
@@ -60,6 +61,65 @@ geometry_msgs::Quaternion operator*(geometry_msgs::Quaternion quat1,geometry_msg
  */
 namespace quaternion_operation
 {
+    /**
+     * @brief convert Euler angles to Quaternion 
+     * 
+     * @param euler Euler angles
+     * @return geometry_msgs::Quaternion Quaternion  
+     */
+    geometry_msgs::Quaternion convertEulerAngleToQuaternion(geometry_msgs::Vector3 euler)
+    {
+        double roll = euler.x;
+        double pitch = euler.y;
+        double yaw = euler.z;
+        Eigen:: Quaterniond quat = Eigen::AngleAxisd(roll, Eigen::Vector3d::UnitX())
+            * Eigen::AngleAxisd(pitch, Eigen::Vector3d::UnitY())
+            * Eigen::AngleAxisd(yaw, Eigen::Vector3d::UnitZ());
+        geometry_msgs::Quaternion ret;
+        ret.x = quat.x();
+        ret.y = quat.y();
+        ret.z = quat.z();
+        ret.w = quat.w();
+        return ret;
+    }
+    
+    /**
+     * @brief Get the Rotation Matrix from geometry_msgs::Quaternion 
+     * 
+     * @param quat input geometry_msgs::Quaternion 
+     * @return Eigen::Matrix3d get 3x3 Rotation Matrix
+     */
+    Eigen::Matrix3d getRotationMatrix(geometry_msgs::Quaternion quat)
+    {
+        double x = quat.x;
+        double y = quat.y;
+        double z = quat.z;
+        double w = quat.w;
+        Eigen::Matrix3d ret(3,3);
+        ret << 
+            1-2*(y*y+z*z), 2*(x*y+z*w),   2*(z*x+w*y),
+            2*(x*y-z*w),   1-2*(z*z+x*x), 2*(y*z-x*w),
+            2*(z*x-w*y),   2*(y*z+w*x),   1-2*(x*x+y*y);
+        return ret;
+    }
+
+    /**
+     * @brief convert Quaternion to the Euler angle
+     * 
+     * @param quat Quaternion
+     * @return geometry_msgs::Vector3 euler angle 
+     */
+    geometry_msgs::Vector3 convertQuaternionToEulerAngle(geometry_msgs::Quaternion quat)
+    {
+        geometry_msgs::Vector3 ret;
+        Eigen::Matrix3d m = getRotationMatrix(quat);
+        Eigen::Vector3d ea = m.eulerAngles(0, 1, 2);
+        ret.x = ea(0);
+        ret.y = ea(1);
+        ret.z = ea(2);
+        return ret;
+    }
+
     /**
      * @brief calculate rotation of
      * 
@@ -112,30 +172,10 @@ namespace quaternion_operation
      * @param quat input Quaternion
      * @return Eigen::MatrixXd converted Eigen Matrix (4,1)
      */
-    Eigen::MatrixXd convert(geometry_msgs::Quaternion quat)
+    Eigen::MatrixXd convertToEigenMatrix(geometry_msgs::Quaternion quat)
     {
         Eigen::MatrixXd ret(4,1);
         ret << quat.x,quat.y,quat.z,quat.w;
-        return ret;
-    }
-
-    /**
-     * @brief Get the Rotation Matrix from geometry_msgs::Quaternion 
-     * 
-     * @param quat input geometry_msgs::Quaternion 
-     * @return Eigen::MatrixXd get 3x3 Rotation Matrix
-     */
-    Eigen::MatrixXd getRotationMatrix(geometry_msgs::Quaternion quat)
-    {
-        double x = quat.x;
-        double y = quat.y;
-        double z = quat.z;
-        double w = quat.w;
-        Eigen::MatrixXd ret(3,3);
-        ret << 
-            1-2*(y*y+z*z), 2*(x*y+z*w),   2*(z*x-w*y),
-            2*(x*y-z*w),   1-2*(z*z+x*x), 2*(y*z-x*w),
-            2*(z*x+w*y),   2*(y*z+w*x),   1-2*(x*x+y*y);
         return ret;
     }
 

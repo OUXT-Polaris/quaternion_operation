@@ -12,7 +12,7 @@ find_package(Eigen3 REQUIRED)
 
 catkin_package(
   INCLUDE_DIRS include
-#  LIBRARIES quaternion_operation
+  LIBRARIES quaternion_operation
   CATKIN_DEPENDS geometry_msgs roscpp
 #  DEPENDS system_lib
 )
@@ -21,6 +21,16 @@ include_directories(
   include
   ${EIGEN3_INCLUDE_DIR}
   ${catkin_INCLUDE_DIRS}
+)
+
+add_library(quaternion_operation src/quaternion_operation.cpp)
+target_link_libraries(quaternion_operation ${catkin_LIBRARIES})
+
+# install executables/libs
+install(TARGETS quaternion_operation
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
 # Install header files
@@ -35,5 +45,6 @@ if (CATKIN_ENABLE_TESTING)
   test/src/test_quaternion_operation.cpp
   ${NODE_STATUS_PUBLISHER_SRC})
   target_link_libraries(test-quaternion_operation
+  quaternion_operation
   ${catkin_LIBRARIES})
 endif ()

@@ -1,5 +1,5 @@
 # quaternion_operation
-Header-Only Quartenion Operation Library for ROS.
+Quartenion Operation Library for ROS.
 
 ![Developed By OUXT Polaris](img/logo.png "Logo")
 

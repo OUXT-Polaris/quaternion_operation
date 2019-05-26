@@ -2,8 +2,8 @@
 Changelog for package quaternion_operation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.2 (2019-05-26)
+------------------
 * Merge pull request `#8 <https://github.com/OUXT-Polaris/quaternion_operation/issues/8>`_ from OUXT-Polaris/develop
   Develop
 * Merge branch 'master' into develop

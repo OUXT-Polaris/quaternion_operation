@@ -298,6 +298,62 @@ TEST(TestSuite, testCase12)
 }
 
 /**
+ * @brief Test for quat/euler conversion
+ * 
+ */
+TEST(TestSuite, testCase13)
+{
+    geometry_msgs::Quaternion q;
+    geometry_msgs::Vector3 e,e1;
+    e.z = 1.0;
+    e.x = 1.0;
+    q = quaternion_operation::convertEulerAngleToQuaternion(e);
+    e1 = quaternion_operation::convertQuaternionToEulerAngle(q);
+    EXPECT_FLOAT_EQ(e.x,e1.x);
+    EXPECT_FLOAT_EQ(e.y,e1.y);
+    EXPECT_FLOAT_EQ(e.z,e1.z);
+}
+
+/**
+ * @brief Test for quat/euler conversion
+ * 
+ */
+TEST(TestSuite, testCase14)
+{
+    geometry_msgs::Quaternion q;
+    geometry_msgs::Vector3 e,e1;
+    e.z = 0.0;
+    q = quaternion_operation::convertEulerAngleToQuaternion(e);
+    e1 = quaternion_operation::convertQuaternionToEulerAngle(q);
+    EXPECT_FLOAT_EQ(e.x,e1.x);
+    EXPECT_FLOAT_EQ(e.y,e1.y);
+    EXPECT_FLOAT_EQ(e.z,e1.z);
+}
+
+/**
+ * @brief test for getRotationMatrix function
+ * @sa quaternion_operation::getRotationMatrix
+ */
+TEST(TestSuite, testCase15)
+{
+    geometry_msgs::Quaternion q1;
+    q1.x = 0;
+    q1.y = std::sqrt((double)0.5);
+    q1.z = 0;
+    q1.w = std::sqrt((double)0.5);
+    Eigen::MatrixXd mat = quaternion_operation::getRotationMatrix(q1);
+    EXPECT_FLOAT_EQ(mat(0,0),  0.0);
+    EXPECT_FLOAT_EQ(mat(0,1),  0.0);
+    EXPECT_FLOAT_EQ(mat(0,2),  1.0);
+    EXPECT_FLOAT_EQ(mat(1,0),  0.0);
+    EXPECT_FLOAT_EQ(mat(1,1),  1.0);
+    EXPECT_FLOAT_EQ(mat(1,2),  0.0);
+    EXPECT_FLOAT_EQ(mat(2,0), -1.0);
+    EXPECT_FLOAT_EQ(mat(2,1),  0.0);
+    EXPECT_FLOAT_EQ(mat(2,2),  0.0);
+}
+
+/**
  * @brief Run all the tests that were declared with TEST()
  * 
  * @param argc 

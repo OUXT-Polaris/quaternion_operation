@@ -57,9 +57,9 @@ namespace quaternion_operation
         double w = quat.w;
         Eigen::Matrix3d ret(3,3);
         ret << 
-            1-2*(y*y+z*z), 2*(x*y+z*w),   2*(z*x+w*y),
-            2*(x*y-z*w),   1-2*(z*z+x*x), 2*(y*z-x*w),
-            2*(z*x-w*y),   2*(y*z+w*x),   1-2*(x*x+y*y);
+            x*x-y*y-z*z+w*w, 2*(x*y-z*w),      2*(z*x+w*y),
+            2*(x*y+z*w),     -x*x+y*y-z*z+w*w, 2*(y*z-x*w),
+            2*(z*x-w*y),     2*(y*z+w*x),      -x*x-y*y+z*z+w*w;
         return ret;
     }
 

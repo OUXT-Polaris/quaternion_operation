@@ -13,14 +13,17 @@
   <build_depend>roscpp</build_depend>
   <build_depend>rostest</build_depend>
   <build_depend>eigen</build_depend>
+  <build_depend>tf2_ros</build_depend>
   <build_export_depend>geometry_msgs</build_export_depend>
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>rostest</build_export_depend>
   <build_export_depend>eigen</build_export_depend>
+  <build_export_depend>tf2_ros</build_export_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rostest</exec_depend>
   <exec_depend>eigen</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

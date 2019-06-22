@@ -66,11 +66,20 @@ namespace quaternion_operation
     geometry_msgs::Vector3 convertQuaternionToEulerAngle(geometry_msgs::Quaternion quat)
     {
         geometry_msgs::Vector3 ret;
+        tf2::Quaternion tf_quat(quat.x,quat.y,quat.z,quat.w);
+        tf2::Matrix3x3 mat(tf_quat);
+        double roll,pitch,yaw;
+        mat.getRPY(roll, pitch, yaw);
+        ret.x = roll;
+        ret.y = pitch;
+        ret.z = yaw;
+        /*
         Eigen::Matrix3d m = getRotationMatrix(quat);
         Eigen::Vector3d ea = m.eulerAngles(0, 1, 2);
         ret.x = ea(0);
         ret.y = ea(1);
         ret.z = ea(2);
+        */
         return ret;
     }
 

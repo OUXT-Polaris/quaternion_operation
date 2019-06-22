@@ -15,6 +15,7 @@
 //headers in ROS
 #include <geometry_msgs/Quaternion.h>
 #include <geometry_msgs/Vector3.h>
+#include <tf2/LinearMath/Matrix3x3.h>
 
 //headers in Eigen
 #define EIGEN_MPL2_ONLY

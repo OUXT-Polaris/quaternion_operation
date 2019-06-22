@@ -278,30 +278,10 @@ TEST(TestSuite, testCase11)
 }
 
 /**
- * @brief Test for quat/euler conversion
- * 
- */
-TEST(TestSuite, testCase12)
-{
-    geometry_msgs::Quaternion q,q1;
-    geometry_msgs::Vector3 euler;
-    q.x = 0;
-    q.y = std::sqrt(0.5);
-    q.z = 0;
-    q.w = std::sqrt(0.5);
-    euler = quaternion_operation::convertQuaternionToEulerAngle(q);
-    q1 = quaternion_operation::convertEulerAngleToQuaternion(euler);
-    EXPECT_FLOAT_EQ(q.x,q1.x);
-    EXPECT_FLOAT_EQ(q.y,q1.y);
-    EXPECT_FLOAT_EQ(q.z,q1.z);
-    EXPECT_FLOAT_EQ(q.w,q1.w);
-}
-
-/**
  * @brief test for getRotationMatrix function
  * @sa quaternion_operation::getRotationMatrix
  */
-TEST(TestSuite, testCase13)
+TEST(TestSuite, testCase12)
 {
     geometry_msgs::Quaternion q1;
     q1.x = 0;

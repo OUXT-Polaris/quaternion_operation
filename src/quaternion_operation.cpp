@@ -35,6 +35,17 @@ namespace quaternion_operation
 {
     geometry_msgs::Quaternion convertEulerAngleToQuaternion(geometry_msgs::Vector3 euler)
     {
+        geometry_msgs::Quaternion ret;
+        double roll = euler.x;
+        double pitch = euler.y;
+        double yaw = euler.z;
+        tf2::Quaternion tf_quat;
+        tf_quat.setEuler(yaw,pitch,roll);
+        ret.x = tf_quat.x();
+        ret.y = tf_quat.y();
+        ret.z = tf_quat.z();
+        ret.w = tf_quat.w();
+        /*
         double roll = euler.x;
         double pitch = euler.y;
         double yaw = euler.z;
@@ -46,6 +57,7 @@ namespace quaternion_operation
         ret.y = quat.y();
         ret.z = quat.z();
         ret.w = quat.w();
+        */
         return ret;
     }
 

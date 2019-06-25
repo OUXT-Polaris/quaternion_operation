@@ -40,7 +40,7 @@ namespace quaternion_operation
         double pitch = euler.y;
         double yaw = euler.z;
         tf2::Quaternion tf_quat;
-        tf_quat.setEuler(yaw,pitch,roll);
+        tf_quat.setRPY(roll,pitch,yaw);
         ret.x = tf_quat.x();
         ret.y = tf_quat.y();
         ret.z = tf_quat.z();

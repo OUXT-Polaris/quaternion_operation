@@ -98,11 +98,11 @@ TEST(TestSuite, testCase4)
     EXPECT_FLOAT_EQ(mat(0,1),  0.0);
     EXPECT_FLOAT_EQ(mat(0,2),  0.0);
     EXPECT_FLOAT_EQ(mat(1,0),  0.0);
-    //EXPECT_FLOAT_EQ(mat(1,1),  0.0);
+    EXPECT_FLOAT_EQ(mat(1,1),  0.0);
     EXPECT_FLOAT_EQ(mat(1,2), -1.0);
     EXPECT_FLOAT_EQ(mat(2,0),  0.0);
     EXPECT_FLOAT_EQ(mat(2,1),  1.0);
-    //EXPECT_FLOAT_EQ(mat(2,2),  0.0);
+    EXPECT_FLOAT_EQ(mat(2,2),  0.0);
 }
 
 /**

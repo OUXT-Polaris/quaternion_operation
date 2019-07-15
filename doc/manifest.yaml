@@ -4,9 +4,10 @@ brief: ''
 bugtracker: ''
 depends:
 - catkin
+- roscpp
 - rostest
 - geometry_msgs
-- roscpp
+- tf2_ros
 - eigen
 description: The quaternion_operation package
 license: Apache License 2.0

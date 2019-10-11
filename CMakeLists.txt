@@ -1,51 +1,55 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(quaternion_operation)
 
-add_compile_options(-std=c++11)
+# Default to C99
+if(NOT CMAKE_C_STANDARD)
+  set(CMAKE_C_STANDARD 99)
+endif()
 
-find_package(catkin REQUIRED COMPONENTS
-  geometry_msgs
-  roscpp
-  tf2_ros
-)
+# Default to C++14
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
 
 find_package(Eigen3 REQUIRED)
-
-catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES quaternion_operation
-  CATKIN_DEPENDS geometry_msgs roscpp tf2_ros
-#  DEPENDS system_lib
-)
 
 include_directories(
   include
   ${EIGEN3_INCLUDE_DIR}
-  ${catkin_INCLUDE_DIRS}
 )
 
 add_library(quaternion_operation src/quaternion_operation.cpp)
-target_link_libraries(quaternion_operation ${catkin_LIBRARIES})
+ament_target_dependencies(quaternion_operation rclcpp geometry_msgs tf2_ros)
 
 # install executables/libs
-install(TARGETS quaternion_operation
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+install(TARGETS
+  quaternion_operation
+  DESTINATION lib/quaternion_operation
 )
 
 # Install header files
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+install(DIRECTORY include/${PROJECT_NAME}
+  DESTINATION include/${PROJECT_NAME}
+  FILES_MATCHING PATTERN "*.h"
 )
 
-if (CATKIN_ENABLE_TESTING)
-  find_package(rostest REQUIRED)
-  add_rostest_gtest(test-quaternion_operation
-  test/test_quaternion_operation.test
-  test/src/test_quaternion_operation.cpp
-  ${NODE_STATUS_PUBLISHER_SRC})
-  target_link_libraries(test-quaternion_operation
-  quaternion_operation
-  ${catkin_LIBRARIES})
-endif ()
+#if (CATKIN_ENABLE_TESTING)
+#  find_package(rostest REQUIRED)
+#  add_rostest_gtest(test-quaternion_operation
+#  test/test_quaternion_operation.test
+#  test/src/test_quaternion_operation.cpp)
+#  target_link_libraries(test-quaternion_operation
+#  quaternion_operation
+#  ${catkin_LIBRARIES})
+#endif ()
+
+ament_package()

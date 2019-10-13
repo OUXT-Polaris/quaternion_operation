@@ -37,9 +37,9 @@ install(TARGETS
 )
 
 # Install header files
-install(DIRECTORY include/${PROJECT_NAME}
-  DESTINATION include/${PROJECT_NAME}
-  FILES_MATCHING PATTERN "*.h"
+install(
+  DIRECTORY "include/"
+  DESTINATION include
 )
 
 #if (CATKIN_ENABLE_TESTING)
@@ -52,4 +52,5 @@ install(DIRECTORY include/${PROJECT_NAME}
 #  ${catkin_LIBRARIES})
 #endif ()
 
+ament_export_include_directories(include)
 ament_package()

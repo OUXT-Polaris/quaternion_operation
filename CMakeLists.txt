@@ -27,15 +27,6 @@ include_directories(
   ${EIGEN3_INCLUDE_DIR}
 )
 
-add_library(quaternion_operation src/quaternion_operation.cpp)
-ament_target_dependencies(quaternion_operation rclcpp geometry_msgs tf2_ros)
-
-# install executables/libs
-install(TARGETS
-  quaternion_operation
-  DESTINATION lib/quaternion_operation
-)
-
 # Install header files
 install(
   DIRECTORY "include/"

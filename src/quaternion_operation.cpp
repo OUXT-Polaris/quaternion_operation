@@ -11,9 +11,9 @@
 
 #include <quaternion_operation/quaternion_operation.h>
 
-geometry_msgs::Quaternion operator+(geometry_msgs::Quaternion quat1,geometry_msgs::Quaternion quat2)
+geometry_msgs::msg::Quaternion operator+(geometry_msgs::msg::Quaternion quat1,geometry_msgs::msg::Quaternion quat2)
 {
-    geometry_msgs::Quaternion ret;
+    geometry_msgs::msg::Quaternion ret;
     ret.x = quat1.x + quat2.x;
     ret.y = quat1.y + quat2.y;
     ret.z = quat1.z + quat2.z;
@@ -21,9 +21,9 @@ geometry_msgs::Quaternion operator+(geometry_msgs::Quaternion quat1,geometry_msg
     return ret;
 }
 
-geometry_msgs::Quaternion operator*(geometry_msgs::Quaternion quat1,geometry_msgs::Quaternion quat2)
+geometry_msgs::msg::Quaternion operator*(geometry_msgs::msg::Quaternion quat1,geometry_msgs::msg::Quaternion quat2)
 {
-    geometry_msgs::Quaternion ret;
+    geometry_msgs::msg::Quaternion ret;
     ret.x =  quat1.w*quat2.x - quat1.z*quat2.y + quat1.y*quat2.z + quat1.x*quat2.w;
     ret.y =  quat1.z*quat2.x + quat1.w*quat2.y - quat1.x*quat2.z + quat1.y*quat2.w;
     ret.z = -quat1.y*quat2.x + quat1.x*quat2.y + quat1.w*quat2.z + quat1.z*quat2.w;
@@ -33,9 +33,9 @@ geometry_msgs::Quaternion operator*(geometry_msgs::Quaternion quat1,geometry_msg
 
 namespace quaternion_operation
 {
-    geometry_msgs::Quaternion convertEulerAngleToQuaternion(geometry_msgs::Vector3 euler)
+    geometry_msgs::msg::Quaternion convertEulerAngleToQuaternion(geometry_msgs::msg::Vector3 euler)
     {
-        geometry_msgs::Quaternion ret;
+        geometry_msgs::msg::Quaternion ret;
         double roll = euler.x;
         double pitch = euler.y;
         double yaw = euler.z;
@@ -52,7 +52,7 @@ namespace quaternion_operation
         Eigen:: Quaterniond quat = Eigen::AngleAxisd(roll, Eigen::Vector3d::UnitX())
             * Eigen::AngleAxisd(pitch, Eigen::Vector3d::UnitY())
             * Eigen::AngleAxisd(yaw, Eigen::Vector3d::UnitZ());
-        geometry_msgs::Quaternion ret;
+        geometry_msgs::msg::Quaternion ret;
         ret.x = quat.x();
         ret.y = quat.y();
         ret.z = quat.z();
@@ -61,7 +61,7 @@ namespace quaternion_operation
         return ret;
     }
 
-    Eigen::Matrix3d getRotationMatrix(geometry_msgs::Quaternion quat)
+    Eigen::Matrix3d getRotationMatrix(geometry_msgs::msg::Quaternion quat)
     {
         double x = quat.x;
         double y = quat.y;
@@ -75,9 +75,9 @@ namespace quaternion_operation
         return ret;
     }
 
-    geometry_msgs::Vector3 convertQuaternionToEulerAngle(geometry_msgs::Quaternion quat)
+    geometry_msgs::msg::Vector3 convertQuaternionToEulerAngle(geometry_msgs::msg::Quaternion quat)
     {
-        geometry_msgs::Vector3 ret;
+        geometry_msgs::msg::Vector3 ret;
         tf2::Quaternion tf_quat(quat.x,quat.y,quat.z,quat.w);
         tf2::Matrix3x3 mat(tf_quat);
         double roll,pitch,yaw;
@@ -104,7 +104,7 @@ namespace quaternion_operation
         return false;
     }
 
-    bool equals(geometry_msgs::Quaternion quat1,geometry_msgs::Quaternion quat2)
+    bool equals(geometry_msgs::msg::Quaternion quat1,geometry_msgs::msg::Quaternion quat2)
     {
         if(equals(quat1.x,quat2.x) && equals(quat1.y,quat2.y) && equals(quat1.z,quat2.z) && equals(quat1.w,quat2.w))
         {
@@ -113,14 +113,14 @@ namespace quaternion_operation
         return false;
     }
 
-    Eigen::MatrixXd convertToEigenMatrix(geometry_msgs::Quaternion quat)
+    Eigen::MatrixXd convertToEigenMatrix(geometry_msgs::msg::Quaternion quat)
     {
         Eigen::MatrixXd ret(4,1);
         ret << quat.x,quat.y,quat.z,quat.w;
         return ret;
     }
 
-    geometry_msgs::Quaternion conjugate(geometry_msgs::Quaternion quat1)
+    geometry_msgs::msg::Quaternion conjugate(geometry_msgs::msg::Quaternion quat1)
     {
         quat1.x = quat1.x * -1;
         quat1.y = quat1.y * -1;
@@ -129,21 +129,21 @@ namespace quaternion_operation
         return quat1;
     }
 
-    geometry_msgs::Quaternion rotation(geometry_msgs::Quaternion from,geometry_msgs::Quaternion rotation)
+    geometry_msgs::msg::Quaternion rotation(geometry_msgs::msg::Quaternion from,geometry_msgs::msg::Quaternion rotation)
     {
         return from*rotation;
     }
 
-    geometry_msgs::Quaternion getRotation(geometry_msgs::Quaternion from,geometry_msgs::Quaternion to)
+    geometry_msgs::msg::Quaternion getRotation(geometry_msgs::msg::Quaternion from,geometry_msgs::msg::Quaternion to)
     {
-        geometry_msgs::Quaternion ans;
+        geometry_msgs::msg::Quaternion ans;
         ans = conjugate(from) * to;
         return ans;
     }
 
-    geometry_msgs::Quaternion slerp(geometry_msgs::Quaternion quat1,geometry_msgs::Quaternion quat2,double t)
+    geometry_msgs::msg::Quaternion slerp(geometry_msgs::msg::Quaternion quat1,geometry_msgs::msg::Quaternion quat2,double t)
     {
-        geometry_msgs::Quaternion q;
+        geometry_msgs::msg::Quaternion q;
         double qr = quat1.w * quat2.w + quat1.x * quat2.x + quat1.y * quat2.y + quat1.z * quat2.z;
         double ss = (double)1.0 - qr * qr;
         if (ss == (double)0.0)

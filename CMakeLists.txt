@@ -48,15 +48,16 @@ install(
   DESTINATION include
 )
 
-#if (CATKIN_ENABLE_TESTING)
-#  find_package(rostest REQUIRED)
-#  add_rostest_gtest(test-quaternion_operation
-#  test/test_quaternion_operation.test
-#  test/src/test_quaternion_operation.cpp)
-#  target_link_libraries(test-quaternion_operation
-#  quaternion_operation
-#  ${catkin_LIBRARIES})
-#endif ()
+if(BUILD_TESTING)
+find_package(ament_lint_auto REQUIRED)
+# the following line skips the linter which checks for copyrights
+# uncomment the line when a copyright and license is not present in all source files
+#set (ament_cmake_copyright_FOUND TRUE)
+# the following line skips cpplint (only works in a git repo)
+# uncomment the line when this package is not in a git repo
+#set (ament_cmake_cpplint_FOUND TRUE)
+ament_lint_auto_find_test_dependencies()
+endif()
 
 ament_export_include_directories(include)
 ament_package()

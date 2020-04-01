@@ -1,11 +1,7 @@
 # quaternion_operation
-Quartenion Operation Library for ROS2.
+Quartenion Operation Library for ROS2. ![ROS2-Eloquent](https://github.com/OUXT-Polaris/quaternion_operation/workflows/ROS2-Eloquent/badge.svg)
 
 ![Developed By OUXT Polaris](img/logo.png "Logo")
-
-| *master* |
-|----------|
-|![ROS2-Eloquent](https://github.com/OUXT-Polaris/quaternion_operation/workflows/ROS2-Eloquent/badge.svg)|
 
 ## How to use
 include headers and Eigen and use functions

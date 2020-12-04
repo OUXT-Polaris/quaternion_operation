@@ -1,4 +1,4 @@
-name: ROS2-Eloquent
+name: build
 
 on: [push, pull_request]
 

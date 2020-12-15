@@ -1,5 +1,5 @@
-# quaternion_operation
-Quartenion Operation Library for ROS2. ![ROS2-Eloquent](https://github.com/OUXT-Polaris/quaternion_operation/workflows/ROS2-Eloquent/badge.svg)
+# quaternion_operation ![ROS2-Foxy](https://github.com/OUXT-Polaris/quaternion_operation/workflows/build/badge.svg)
+Quartenion Operation Library for ROS2. 
 
 ![Developed By OUXT Polaris](img/logo.png "Logo")
 

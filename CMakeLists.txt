@@ -1,13 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 project(quaternion_operation)
 
+find_package(Eigen3 REQUIRED)
 find_package(ament_cmake_auto REQUIRED)
 ament_auto_find_build_dependencies()
-
-include_directories(	
-  include	
-  ${EIGEN3_INCLUDE_DIR}	
-)
 
 ament_auto_add_library(${PROJECT_NAME} SHARED src/quaternion_operation.cpp)
 

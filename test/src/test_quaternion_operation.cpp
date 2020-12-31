@@ -12,9 +12,6 @@
 //headers in Google Test
 #include <gtest/gtest.h>
 
-//headers in ROS
-#include <ros/ros.h>
-
 //headers in this package
 #include <quaternion_operation/quaternion_operation.h>
 
@@ -24,7 +21,7 @@
  */
 TEST(TestSuite, testCase1)
 {
-  geometry_msgs::Quaternion ans, q1, q2;
+  geometry_msgs::msg::Quaternion ans, q1, q2;
   q1.x = 0;
   q1.y = 1;
   q1.z = 0;
@@ -46,7 +43,7 @@ TEST(TestSuite, testCase1)
  */
 TEST(TestSuite, testCase2)
 {
-  geometry_msgs::Quaternion ans, q1, q2;
+  geometry_msgs::msg::Quaternion ans, q1, q2;
   q1.x = 0;
   q1.y = 1;
   q1.z = 0;
@@ -65,7 +62,7 @@ TEST(TestSuite, testCase2)
  */
 TEST(TestSuite, testCase3)
 {
-  geometry_msgs::Quaternion q1;
+  geometry_msgs::msg::Quaternion q1;
   q1.x = 0;
   q1.y = 0;
   q1.z = 0;
@@ -88,7 +85,7 @@ TEST(TestSuite, testCase3)
  */
 TEST(TestSuite, testCase4)
 {
-  geometry_msgs::Quaternion q1;
+  geometry_msgs::msg::Quaternion q1;
   q1.x = std::sqrt((double)0.5);
   q1.y = 0;
   q1.z = 0;
@@ -111,7 +108,7 @@ TEST(TestSuite, testCase4)
  */
 TEST(TestSuite, testCase5)
 {
-  geometry_msgs::Quaternion q1, q2, ans;
+  geometry_msgs::msg::Quaternion q1, q2, ans;
   q1.x = 0;
   q1.y = 0;
   q1.z = 0;
@@ -130,7 +127,7 @@ TEST(TestSuite, testCase5)
  */
 TEST(TestSuite, testCase6)
 {
-  geometry_msgs::Quaternion q1, q2, ans;
+  geometry_msgs::msg::Quaternion q1, q2, ans;
   q1.x = 0;
   q1.y = 0;
   q1.z = 0;
@@ -151,7 +148,7 @@ TEST(TestSuite, testCase6)
  */
 TEST(TestSuite, testCase7)
 {
-  geometry_msgs::Quaternion q1, q2, ans;
+  geometry_msgs::msg::Quaternion q1, q2, ans;
   q1.x = 0;
   q1.y = 0;
   q1.z = 0;
@@ -210,7 +207,7 @@ TEST(TestSuite, testCase7)
  */
 TEST(TestSuite, testCase8)
 {
-  geometry_msgs::Quaternion q1, q2, ans;
+  geometry_msgs::msg::Quaternion q1, q2, ans;
   q1.x = 1;
   q1.y = 0;
   q1.z = 0;
@@ -229,7 +226,7 @@ TEST(TestSuite, testCase8)
  */
 TEST(TestSuite, testCase9)
 {
-  geometry_msgs::Quaternion q1, q2;
+  geometry_msgs::msg::Quaternion q1, q2;
   q1.x = std::sqrt((double)0.8);
   q1.y = 0;
   q1.z = 0;
@@ -247,8 +244,8 @@ TEST(TestSuite, testCase9)
  */
 TEST(TestSuite, testCase10)
 {
-  geometry_msgs::Quaternion q;
-  geometry_msgs::Vector3 euler;
+  geometry_msgs::msg::Quaternion q;
+  geometry_msgs::msg::Vector3 euler;
   euler.x = 0;
   euler.y = 0;
   euler.z = 0;
@@ -265,8 +262,8 @@ TEST(TestSuite, testCase10)
  */
 TEST(TestSuite, testCase11)
 {
-  geometry_msgs::Quaternion q;
-  geometry_msgs::Vector3 euler;
+  geometry_msgs::msg::Quaternion q;
+  geometry_msgs::msg::Vector3 euler;
   q.x = 0;
   q.y = 0;
   q.z = 0;
@@ -283,7 +280,7 @@ TEST(TestSuite, testCase11)
  */
 TEST(TestSuite, testCase12)
 {
-  geometry_msgs::Quaternion q1;
+  geometry_msgs::msg::Quaternion q1;
   q1.x = 0;
   q1.y = std::sqrt((double)0.5);
   q1.z = 0;

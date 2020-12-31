@@ -26,8 +26,10 @@ include_directories(
   ${EIGEN3_INCLUDE_DIR}
 )
 
-ament_auto_add_library(quaternion_operation 
-  SHARED src/quaternion_operation.cpp)
+add_library(quaternion_operation SHARED src/quaternion_operation.cpp)
+ament_target_dependencies(quaternion_operation rclcpp geometry_msgs tf2_ros)
+ament_export_targets(export_quaternion_operation HAS_LIBRARY_TARGET)
+ament_export_libraries(quaternion_operation)
 
 # install executables/libs
 install(

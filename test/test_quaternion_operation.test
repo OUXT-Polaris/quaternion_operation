@@ -1,3 +1,0 @@
-<launch>
-  <test test-name="test-quaternion_operation" pkg="quaternion_operation" type="test-quaternion_operation" name="test"/>
-</launch>

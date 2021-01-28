@@ -1,3 +1,17 @@
+// Copyright (c) 2019 OUXT Polaris
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 /**
  * @file test_quaternion_operation.cpp
  * @author Masaya Kataoka ms.kataoka@gmail.com
@@ -9,10 +23,10 @@
  *
  */
 
-//headers in Google Test
+// headers in Google Test
 #include <gtest/gtest.h>
 
-//headers in this package
+// headers in this package
 #include <quaternion_operation/quaternion_operation.h>
 
 /**
@@ -86,10 +100,10 @@ TEST(TestSuite, testCase3)
 TEST(TestSuite, testCase4)
 {
   geometry_msgs::msg::Quaternion q1;
-  q1.x = std::sqrt((double)0.5);
+  q1.x = std::sqrt(0.5);
   q1.y = 0;
   q1.z = 0;
-  q1.w = std::sqrt((double)0.5);
+  q1.w = std::sqrt(0.5);
   Eigen::MatrixXd mat = quaternion_operation::getRotationMatrix(q1);
   EXPECT_FLOAT_EQ(mat(0, 0), 1.0);
   EXPECT_FLOAT_EQ(mat(0, 1), 0.0);
@@ -173,8 +187,8 @@ TEST(TestSuite, testCase7)
   q1.y = 0;
   q1.z = 0;
   q1.w = 1;
-  q2.x = std::sqrt((double)0.5);
-  q2.y = std::sqrt((double)0.5);
+  q2.x = std::sqrt(0.5);
+  q2.y = std::sqrt(0.5);
   q2.z = 0;
   q2.w = 0;
   ans = quaternion_operation::getRotation(q1, quaternion_operation::rotation(q1, q2));
@@ -183,20 +197,20 @@ TEST(TestSuite, testCase7)
   q1.y = 0;
   q1.z = 0;
   q1.w = 1;
-  q2.x = std::sqrt((double)0.4);
-  q2.y = std::sqrt((double)0.3);
+  q2.x = std::sqrt(0.4);
+  q2.y = std::sqrt(0.3);
   q2.z = 0;
-  q2.w = std::sqrt((double)0.3);
+  q2.w = std::sqrt(0.3);
   ans = quaternion_operation::getRotation(q1, quaternion_operation::rotation(q1, q2));
   EXPECT_EQ(quaternion_operation::equals(q2, ans), true);
-  q1.x = std::sqrt((double)0.8);
+  q1.x = std::sqrt(0.8);
   q1.y = 0;
   q1.z = 0;
-  q1.w = std::sqrt((double)0.2);
-  q2.x = std::sqrt((double)0.4);
-  q2.y = std::sqrt((double)0.3);
+  q1.w = std::sqrt(0.2);
+  q2.x = std::sqrt(0.4);
+  q2.y = std::sqrt(0.3);
   q2.z = 0;
-  q2.w = std::sqrt((double)0.3);
+  q2.w = std::sqrt(0.3);
   ans = quaternion_operation::getRotation(q1, quaternion_operation::rotation(q1, q2));
   EXPECT_EQ(quaternion_operation::equals(q2, ans), true);
 }
@@ -227,14 +241,14 @@ TEST(TestSuite, testCase8)
 TEST(TestSuite, testCase9)
 {
   geometry_msgs::msg::Quaternion q1, q2;
-  q1.x = std::sqrt((double)0.8);
+  q1.x = std::sqrt(0.8);
   q1.y = 0;
   q1.z = 0;
-  q1.w = std::sqrt((double)0.2);
-  q2.x = std::sqrt((double)0.4);
-  q2.y = std::sqrt((double)0.3);
+  q1.w = std::sqrt(0.2);
+  q2.x = std::sqrt(0.4);
+  q2.y = std::sqrt(0.3);
   q2.z = 0;
-  q2.w = std::sqrt((double)0.3);
+  q2.w = std::sqrt(0.3);
   EXPECT_EQ(quaternion_operation::equals(q1 * q2, q2 * q1), false);
 }
 
@@ -282,9 +296,9 @@ TEST(TestSuite, testCase12)
 {
   geometry_msgs::msg::Quaternion q1;
   q1.x = 0;
-  q1.y = std::sqrt((double)0.5);
+  q1.y = std::sqrt(0.5);
   q1.z = 0;
-  q1.w = std::sqrt((double)0.5);
+  q1.w = std::sqrt(0.5);
   Eigen::MatrixXd mat = quaternion_operation::getRotationMatrix(q1);
   EXPECT_FLOAT_EQ(mat(0, 0), 0.0);
   EXPECT_FLOAT_EQ(mat(0, 1), 0.0);

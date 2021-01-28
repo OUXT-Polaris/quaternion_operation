@@ -11,6 +11,8 @@
 
 #include <quaternion_operation/quaternion_operation.h>
 
+#include <limits>
+
 geometry_msgs::msg::Quaternion operator+(
   geometry_msgs::msg::Quaternion quat1,
   geometry_msgs::msg::Quaternion quat2)
@@ -109,8 +111,9 @@ bool equals(double a, double b)
 
 bool equals(geometry_msgs::msg::Quaternion quat1, geometry_msgs::msg::Quaternion quat2)
 {
-  if (equals(quat1.x,
-    quat2.x) &&
+  if (equals(
+      quat1.x,
+      quat2.x) &&
     equals(quat1.y, quat2.y) && equals(quat1.z, quat2.z) && equals(quat1.w, quat2.w))
   {
     return true;
@@ -130,7 +133,7 @@ geometry_msgs::msg::Quaternion conjugate(geometry_msgs::msg::Quaternion quat1)
   quat1.x = quat1.x * -1;
   quat1.y = quat1.y * -1;
   quat1.z = quat1.z * -1;
-  //quat1.w = quat1.w * -1;
+  // quat1.w = quat1.w * -1;
   return quat1;
 }
 
@@ -156,8 +159,9 @@ geometry_msgs::msg::Quaternion slerp(
 {
   geometry_msgs::msg::Quaternion q;
   double qr = quat1.w * quat2.w + quat1.x * quat2.x + quat1.y * quat2.y + quat1.z * quat2.z;
-  double ss = (double)1.0 - qr * qr;
-  if (ss == (double)0.0) {
+  double ss = 1.0 - qr * qr;
+  constexpr double e = std::numeric_limits<double>::epsilon();
+  if (std::fabs(ss) <= e) {
     q.w = quat1.w;
     q.x = quat1.x;
     q.y = quat1.y;
@@ -177,4 +181,4 @@ geometry_msgs::msg::Quaternion slerp(
     return q;
   }
 }
-}
+}  // namespace quaternion_operation

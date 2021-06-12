@@ -27,6 +27,7 @@ include_directories(
 )
 
 add_library(quaternion_operation SHARED src/quaternion_operation.cpp)
+target_link_libraries(quaternion_operation Eigen3::Eigen)
 ament_target_dependencies(quaternion_operation rclcpp geometry_msgs tf2_ros)
 ament_export_targets(export_quaternion_operation HAS_LIBRARY_TARGET)
 ament_export_libraries(quaternion_operation)
@@ -55,5 +56,11 @@ if(BUILD_TESTING)
   target_link_libraries(test_quaternio_operation quaternion_operation)
 endif()
 
+ament_export_dependencies(
+  tf2_ros
+  rclcpp
+  geometry_msgs
+  Eigen3
+)
 ament_export_include_directories(include)
 ament_package()

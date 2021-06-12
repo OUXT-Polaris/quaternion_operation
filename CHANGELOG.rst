@@ -2,8 +2,8 @@
 Changelog for package quaternion_operation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.5 (2021-06-12)
+------------------
 * Merge pull request `#25 <https://github.com/OUXT-Polaris/quaternion_operation/issues/25>`_ from OUXT-Polaris/feature/add_compile_flag
   add pthread flag
 * remove dashing workflow

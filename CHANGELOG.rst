@@ -2,6 +2,39 @@
 Changelog for package quaternion_operation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#25 <https://github.com/OUXT-Polaris/quaternion_operation/issues/25>`_ from OUXT-Polaris/feature/add_compile_flag
+  add pthread flag
+* remove dashing workflow
+* add find_package to the depends
+* fix workflow
+* add pthread flag
+* Merge pull request `#23 <https://github.com/OUXT-Polaris/quaternion_operation/issues/23>`_ from OUXT-Polaris/feature/export_depends
+  update depends
+* Merge pull request `#24 <https://github.com/OUXT-Polaris/quaternion_operation/issues/24>`_ from OUXT-Polaris/workflow/dashing
+  Workflow/dashing
+* Merge branch 'ros2' into workflow/dashing
+* Merge branch 'ros2' into feature/export_depends
+* update depends
+* Merge pull request `#22 <https://github.com/OUXT-Polaris/quaternion_operation/issues/22>`_ from OUXT-Polaris/feature/add_license
+  add license files
+* add license files
+* Merge pull request `#21 <https://github.com/OUXT-Polaris/quaternion_operation/issues/21>`_ from OUXT-Polaris/fix/cpplint
+  enable pass cpplint
+* add copyright
+* enable pass cpplint
+* Merge pull request `#20 <https://github.com/OUXT-Polaris/quaternion_operation/issues/20>`_ from OUXT-Polaris/feature/remove_old_ci
+  remove old CI
+* remove old CI
+* Merge pull request `#19 <https://github.com/OUXT-Polaris/quaternion_operation/issues/19>`_ from OUXT-Polaris/workflow/foxy
+  update CI workflow for foxy
+* update .github/workflows/ROS2-Dashing.yaml
+* update dependency.repos
+* update .github/workflows/ROS2-Foxy.yaml
+* update dependency.repos
+* Contributors: Masaya Kataoka, robotx_buildfarm
+
 0.0.3 (2019-05-26)
 ------------------
 

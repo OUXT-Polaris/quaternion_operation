@@ -17,8 +17,10 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_auto REQUIRED)
+
 ament_auto_find_build_dependencies()
 
+find_package(Threads REQUIRED)
 find_package(Eigen3 REQUIRED)
 
 include_directories(
@@ -27,7 +29,7 @@ include_directories(
 )
 
 add_library(quaternion_operation SHARED src/quaternion_operation.cpp)
-target_link_libraries(quaternion_operation Eigen3::Eigen)
+target_link_libraries(quaternion_operation Eigen3::Eigen Threads::Threads)
 ament_target_dependencies(quaternion_operation rclcpp geometry_msgs tf2_ros)
 ament_export_targets(export_quaternion_operation HAS_LIBRARY_TARGET)
 ament_export_libraries(quaternion_operation)
@@ -53,7 +55,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
   find_package(ament_cmake_gtest REQUIRED)
   ament_add_gtest(test_quaternio_operation test/src/test_quaternion_operation.cpp)
-  target_link_libraries(test_quaternio_operation quaternion_operation)
+  target_link_libraries(test_quaternio_operation quaternion_operation Threads::Threads)
 endif()
 
 ament_export_dependencies(
@@ -61,6 +63,7 @@ ament_export_dependencies(
   rclcpp
   geometry_msgs
   Eigen3
+  Threads
 )
 ament_export_include_directories(include)
 ament_package()

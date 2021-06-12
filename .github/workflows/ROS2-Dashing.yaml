@@ -1,8 +1,6 @@
 
 name: ROS2-dashing
 
-name: documentat
-
 on:
   schedule:
     - cron: 0 0 * * *

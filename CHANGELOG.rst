@@ -2,8 +2,8 @@
 Changelog for package quaternion_operation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2021-07-12)
+------------------
 * add gtest to the depends
 * Merge pull request `#26 <https://github.com/OUXT-Polaris/quaternion_operation/issues/26>`_ from OUXT-Polaris/workflow/galactic
   update CI workflow for galactic

@@ -2,6 +2,14 @@
 Changelog for package quaternion_operation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* add gtest to the depends
+* Merge pull request `#26 <https://github.com/OUXT-Polaris/quaternion_operation/issues/26>`_ from OUXT-Polaris/workflow/galactic
+  update CI workflow for galactic
+* update .github/workflows/ROS2-Galactic.yaml
+* Contributors: Masaya Kataoka, robotx_buildfarm
+
 0.0.5 (2021-06-12)
 ------------------
 * Merge pull request `#25 <https://github.com/OUXT-Polaris/quaternion_operation/issues/25>`_ from OUXT-Polaris/feature/add_compile_flag

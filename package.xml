@@ -24,6 +24,7 @@
   <exec_depend>tf2_ros</exec_depend>
   <depend>ament_cmake_auto</depend>
   <test_depend>ament_cmake_gtest</test_depend>
+  <test_depend>ouxt_lint_common</test_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

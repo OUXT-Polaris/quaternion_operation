@@ -2,6 +2,40 @@
 Changelog for package quaternion_operation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#43 <https://github.com/OUXT-Polaris/quaternion_operation/issues/43>`_ from OUXT-Polaris/fix/pthread
+  update CMakeLists.txt
+* update CMakeLists.txt
+* Setup workflow (`#42 <https://github.com/OUXT-Polaris/quaternion_operation/issues/42>`_)
+* Setup workflow (`#41 <https://github.com/OUXT-Polaris/quaternion_operation/issues/41>`_)
+* Setup workflow (`#40 <https://github.com/OUXT-Polaris/quaternion_operation/issues/40>`_)
+* Setup workflow (`#39 <https://github.com/OUXT-Polaris/quaternion_operation/issues/39>`_)
+* Setup workflow (`#38 <https://github.com/OUXT-Polaris/quaternion_operation/issues/38>`_)
+* Setup workflow (`#37 <https://github.com/OUXT-Polaris/quaternion_operation/issues/37>`_)
+* Setup workflow (`#36 <https://github.com/OUXT-Polaris/quaternion_operation/issues/36>`_)
+* Setup workflow (`#35 <https://github.com/OUXT-Polaris/quaternion_operation/issues/35>`_)
+* Setup workflow (`#34 <https://github.com/OUXT-Polaris/quaternion_operation/issues/34>`_)
+* Setup build test workflow (`#33 <https://github.com/OUXT-Polaris/quaternion_operation/issues/33>`_)
+* Setup build test workflow (`#32 <https://github.com/OUXT-Polaris/quaternion_operation/issues/32>`_)
+* Merge pull request `#31 <https://github.com/OUXT-Polaris/quaternion_operation/issues/31>`_ from OUXT-Polaris/workflow/build_test
+  [Bot] Update workflow
+* Setup build test workflow
+* Merge pull request `#30 <https://github.com/OUXT-Polaris/quaternion_operation/issues/30>`_ from OUXT-Polaris/workflow/build_test
+  [Bot] Update workflow
+* update repos file
+* apply reformat
+* remove unused test
+* add ouxt_lint_common package
+* Setup build test workflow
+* Merge pull request `#28 <https://github.com/OUXT-Polaris/quaternion_operation/issues/28>`_ from OUXT-Polaris/workflow/scenario_test
+  [Bot] Update workflow
+* Setup scenario test workflow
+* Merge pull request `#27 <https://github.com/OUXT-Polaris/quaternion_operation/issues/27>`_ from OUXT-Polaris/feature/add_flag
+  add pthread flag
+* add pthread flag
+* Contributors: Masaya Kataoka, MasayaKataoka, wam-v-tan
+
 0.0.6 (2021-07-12)
 ------------------
 * add gtest to the depends

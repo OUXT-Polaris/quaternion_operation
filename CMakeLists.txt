@@ -15,7 +15,8 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-set(CMAKE_CXX_FLAGS "-pthread")
+set(CMAKE_CXX_FLAGS "${CMAKE_XX_FLAGS} -pthread")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread")
 
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_auto REQUIRED)
@@ -31,7 +32,7 @@ include_directories(
 )
 
 add_library(quaternion_operation SHARED src/quaternion_operation.cpp)
-target_link_libraries(quaternion_operation Eigen3::Eigen Threads::Threads)
+target_link_libraries(quaternion_operation Eigen3::Eigen Threads::Threads pthread)
 ament_target_dependencies(quaternion_operation rclcpp geometry_msgs tf2_ros)
 ament_export_targets(export_quaternion_operation HAS_LIBRARY_TARGET)
 ament_export_libraries(quaternion_operation)
@@ -57,7 +58,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
   find_package(ament_cmake_gtest REQUIRED)
   ament_add_gtest(test_quaternio_operation test/src/test_quaternion_operation.cpp)
-  target_link_libraries(test_quaternio_operation quaternion_operation Threads::Threads)
+  target_link_libraries(test_quaternio_operation quaternion_operation Threads::Threads pthread)
 endif()
 
 ament_export_dependencies(

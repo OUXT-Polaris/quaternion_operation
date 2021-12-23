@@ -2,8 +2,8 @@
 Changelog for package quaternion_operation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.7 (2021-12-23)
+------------------
 * Merge pull request `#43 <https://github.com/OUXT-Polaris/quaternion_operation/issues/43>`_ from OUXT-Polaris/fix/pthread
   update CMakeLists.txt
 * update CMakeLists.txt

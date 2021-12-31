@@ -12,8 +12,8 @@ Changelog for package quaternion_operation
 * add new action
 * Contributors: Masaya Kataoka
 
-Forthcoming
------------
+0.0.9 (2021-12-31)
+------------------
 * enable auto-merge PR (`#52 <https://github.com/OUXT-Polaris/quaternion_operation/issues/52>`_)
 * Release 0.0.8 (`#51 <https://github.com/OUXT-Polaris/quaternion_operation/issues/51>`_)
 * Merge pull request `#47 <https://github.com/OUXT-Polaris/quaternion_operation/issues/47>`_ from OUXT-Polaris/feature/bloom_release

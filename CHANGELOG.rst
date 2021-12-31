@@ -2,8 +2,8 @@
 Changelog for package quaternion_operation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.8 (2021-12-31)
+------------------
 * Merge pull request `#47 <https://github.com/OUXT-Polaris/quaternion_operation/issues/47>`_ from OUXT-Polaris/feature/bloom_release
 * change target branch
 * Merge pull request `#45 <https://github.com/OUXT-Polaris/quaternion_operation/issues/45>`_ from OUXT-Polaris/feature/bloom_release

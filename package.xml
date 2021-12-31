@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>quaternion_operation</name>
-  <version>0.0.7</version>
+  <version>0.0.8</version>
   <description>The quaternion_operation package</description>
 
   <maintainer email="ms.kataoka@gmail.com">Masaya Kataoka</maintainer>

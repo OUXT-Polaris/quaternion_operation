@@ -23,6 +23,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: open pull-request
         uses: repo-sync/pull-request@v2
+        id: create_pull_request
         with:
           source_branch: ${{ steps.create_release.outputs.created_branch }}
           destination_branch: ${{ github.event.repository.default_branch }}
@@ -30,6 +31,12 @@ jobs:
           pr_body: close \#${{ github.event.issue.number }}
           pr_assignee: wam-v-tan
           github_token: ${{ secrets.WAMV_TAN_BOT_SECRET }}
+      - name: Enable Pull Request Automerge
+        uses: peter-evans/enable-pull-request-automerge@v1
+        with:
+          token: ${{ secrets.WAMV_TAN_BOT_SECRET }}
+          pull-request-number: ${{ steps.create_pull_request.outputs.pr_number }}
+          merge-method: squash
       - name: create GitHub release
         uses: actions/create-release@v1
         continue-on-error: true

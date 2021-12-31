@@ -43,8 +43,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.bloom.outputs.version }}
-          release_name: Release ${{ steps.bloom.outputs.version }}
+          tag_name: ${{ steps.create_release.outputs.version}}
+          release_name: Release ${{ steps.create_release.outputs.version}}
       - name: bloom release
         if: github.event.label.name == 'bloom'
         id: bloom

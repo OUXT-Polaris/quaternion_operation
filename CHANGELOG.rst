@@ -24,6 +24,15 @@ Changelog for package quaternion_operation
 * add new action
 * Contributors: Masaya Kataoka, wam-v-tan
 
+Forthcoming
+-----------
+* Add ament_lint_auto dependency to package.xml. (`#58 <https://github.com/OUXT-Polaris/quaternion_operation/issues/58>`_)
+* Setup workflow (`#59 <https://github.com/OUXT-Polaris/quaternion_operation/issues/59>`_)
+* Release 0.0.10 (`#57 <https://github.com/OUXT-Polaris/quaternion_operation/issues/57>`_)
+  * Update changelog
+  * 0.0.10
+* Contributors: Steven! Ragnarök, wam-v-tan
+
 0.0.10 (2021-12-31)
 -------------------
 * Fix/workflow (`#55 <https://github.com/OUXT-Polaris/quaternion_operation/issues/55>`_)

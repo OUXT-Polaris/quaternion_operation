@@ -24,6 +24,16 @@ Changelog for package quaternion_operation
 * add new action
 * Contributors: Masaya Kataoka, wam-v-tan
 
+Forthcoming
+-----------
+* add header file (`#63 <https://github.com/OUXT-Polaris/quaternion_operation/issues/63>`_)
+* Setup workflow (`#62 <https://github.com/OUXT-Polaris/quaternion_operation/issues/62>`_)
+* [Bot] Update workflow (`#61 <https://github.com/OUXT-Polaris/quaternion_operation/issues/61>`_)
+  * Setup workflow
+  * empty commit
+  Co-authored-by: Masaya Kataoka <ms.kataoka@gmail.com>
+* Contributors: Masaya Kataoka, wam-v-tan
+
 0.0.11 (2022-02-10)
 -------------------
 * Add ament_lint_auto dependency to package.xml. (`#58 <https://github.com/OUXT-Polaris/quaternion_operation/issues/58>`_)

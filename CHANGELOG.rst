@@ -24,8 +24,8 @@ Changelog for package quaternion_operation
 * add new action
 * Contributors: Masaya Kataoka, wam-v-tan
 
-Forthcoming
------------
+0.0.12 (2023-02-15)
+-------------------
 * add header file (`#63 <https://github.com/OUXT-Polaris/quaternion_operation/issues/63>`_)
 * Setup workflow (`#62 <https://github.com/OUXT-Polaris/quaternion_operation/issues/62>`_)
 * [Bot] Update workflow (`#61 <https://github.com/OUXT-Polaris/quaternion_operation/issues/61>`_)
